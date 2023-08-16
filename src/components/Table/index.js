@@ -4,6 +4,10 @@ import { columnNames } from "../../consts";
 import "./Table.sass";
 import Cart from "../Cart";
 
+function id() {
+    return "id" + Math.random().toString(16).slice(2)
+}
+
 function TableHeader({eventCount}) {
     return (
         <thead>
@@ -11,7 +15,7 @@ function TableHeader({eventCount}) {
             <th></th>
             <th>Event Count: {eventCount}</th>
             {columnNames.map((c) => (
-                <th key={Math.random()}>{c}</th>
+                <th key={id()}>{c}</th>
             ))}
         </tr>
         </thead>
@@ -67,7 +71,7 @@ const Table = ({dataToRender, eventCount}) => {
                                     </div>
                                 </td>
                                 {columnNames.map((c) => (
-                                    <td>{c}</td>
+                                    <td key={id()}>{c}</td>
                                 ))}
                             </tr>
                             <tr>

@@ -5,23 +5,18 @@ import { RENDER_COUNT } from "./consts";
 import "./main.sass";
 
 export default function App() {
-    const [mainData, setMainData] = useState(JSON.parse(localStorage.data) || []);
+    const [mainData, setMainData] = useState([]);
     const [tempData, setTempData] = useState([]);
 
     useEffect(() => {
-        if (localStorage.data == null) {
-            fetch("https://nesine-case-study.onrender.com/bets").then((d) =>
-                d.json().then((r) => {
-                    localStorage.setItem("data", JSON.stringify(r));
-                    setMainData(r);
-                })
-            );
-        }
+        fetch("https://nesine-case-study.onrender.com/bets").then((d) =>
+            d.json().then((r) => setMainData(r))
+        );
     }, []);
 
     useEffect(() => {
         setTempData(mainData.slice(0, RENDER_COUNT));
-    }, []);
+    }, [mainData]);
 
     const onLoadMore = () => {
         setTempData([

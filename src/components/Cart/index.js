@@ -33,7 +33,7 @@ const Cart = () => {
     return (
         <div className="cart-container">
             {cart.map(c =>
-                <Coupon MBS={c.MBS} code={c.code} match={c.match} ratio={c.ratio}/>
+                <Coupon key={c.code} MBS={c.MBS} code={c.code} match={c.match} ratio={c.ratio}/>
             )}
             <span className="sum">Toplam Tutar: {cost} TL</span>
         </div>
