@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CouponContext } from '../context/CouponContext'
 import { columnNames } from "../../consts";
 import "./Table.sass";
@@ -20,7 +20,6 @@ function TableHeader({eventCount}) {
 
 const Table = ({dataToRender, eventCount}) => {
     const [coupons, setCoupons] = useState([]);
-    //const [cell, setCell] = useState(null)
 
     const onFieldClick = ((e, couponData) => {
         const {code, ratio} = couponData
@@ -49,10 +48,6 @@ const Table = ({dataToRender, eventCount}) => {
             setCoupons(tempCoupons);
         }
     });
-
-    useEffect(() => {
-        console.log('Coupons has updated', JSON.stringify(coupons))
-    }, [coupons])
 
     return (
         <CouponContext.Provider value={coupons}>
