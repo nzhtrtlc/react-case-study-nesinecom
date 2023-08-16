@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
   },
-  devtool: "inline-source-map",
+  devtool: "eval-source-map",
   devServer: {
     static: "./dist",
   },
@@ -20,6 +20,10 @@ module.exports = {
         use: {
           loader: "babel-loader",
         },
+      },
+      {
+        test: /\.(scss|css|sass)$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },

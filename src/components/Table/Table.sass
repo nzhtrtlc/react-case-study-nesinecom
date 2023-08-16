@@ -1,0 +1,27 @@
+.tableFixedHeader
+  overflow-y: auto
+  height: 200px
+  border-collapse: collapse
+  width: 100%
+
+  & thead th
+    position: sticky
+    top: 0
+    background-color: #eee
+  th,
+  td
+    border: 1px solid #ccc
+
+    &:nth-child(n+2)
+      text-align: center
+
+    th
+      background: #eee
+  tbody
+    tr:nth-child(even) td
+      height: 2.5rem
+      &:hover
+        cursor: pointer
+
+    tr:nth-child(odd) td
+      background-color: #f6f2f2
